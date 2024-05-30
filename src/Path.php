@@ -190,7 +190,11 @@ class Path
      */
     public static function clean($path, $ds = \DIRECTORY_SEPARATOR)
     {
-        if (!\is_string($path) && !empty($path)) {
+        if ($path === '') {
+            return '';
+        }
+
+        if (!\is_string($path)) {
             throw new \InvalidArgumentException('You must specify a non-empty path to clean');
         }
 
